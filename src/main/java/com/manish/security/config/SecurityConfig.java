@@ -23,13 +23,11 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
          http
                  .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/v1/product/all","/api/v1/user/**").permitAll()
-                        .requestMatchers("/api/v1/product/student").hasRole("STUDENT")
-                        .requestMatchers("/api/v1/product/teacher").hasRole("TEACHER")
-                        .requestMatchers("/api/v1/product/management").hasRole("MANAGEMENT"))
+                 .authorizeHttpRequests(auth -> auth
+                         .requestMatchers("/api/v1/product/all","/api/v1/user/**").permitAll()
+                         .anyRequest().authenticated())
                  .formLogin(Customizer.withDefaults())
-                .httpBasic(Customizer.withDefaults());
+                 .httpBasic(Customizer.withDefaults());
 
         return http.build();
     }
