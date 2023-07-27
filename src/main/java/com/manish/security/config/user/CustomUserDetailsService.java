@@ -1,4 +1,4 @@
-package com.manish.security.config;
+package com.manish.security.config.user;
 
 import com.manish.security.entity.User;
 import com.manish.security.repository.UserRepository;
